@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y lsb-release \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install imap \
     && docker-php-ext-enable imap \
+    && pecl install apcu \
     \
     && cd ~ \
     \

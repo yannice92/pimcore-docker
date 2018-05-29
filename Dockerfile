@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y lsb-release \
       ffmpeg html2text ghostscript libreoffice pngcrush jpegoptim exiftool poppler-utils git wget \
     \
     && a2enmod rewrite headers \
-	&& docker-php-ext-configure gd  --with-jpeg-dir=/usr/local/include  --with-png-dir=/usr/local/include  --with-xpm-dir=/usr/local/include  --with-vpx-dir=/usr/local/include  --with-freetype-dir=/usr/local/include \
+	&& docker-php-ext-configure gd  --with-jpeg-dir=/usr/local/include  --with-png-dir=/usr/local/include  --with-xpm-dir=/usr/local/include --with-freetype-dir=/usr/local/include \
     && docker-php-ext-install calendar intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache \
     && docker-php-ext-enable calendar intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache \
     && pecl install xdebug redis imagick \

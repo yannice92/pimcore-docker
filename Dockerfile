@@ -4,20 +4,18 @@ RUN apt-get update && apt-get install -y lsb-release \
     && echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" > /etc/apt/sources.list.d/backports.list \
     && apt-get update && apt-get install -y --no-install-recommends \
       autoconf automake libtool nasm make pkg-config libz-dev build-essential g++ \
-      zlib1g-dev libicu-dev libbz2-dev libmagickwand-dev libjpeg-dev libvpx-dev libxpm-dev libpng-dev libfreetype6-dev libc-client-dev \
+      zlib1g-dev libicu-dev libbz2-dev libjpeg-dev libpng-dev libfreetype6-dev libc-client-dev \
       libkrb5-dev libxml2-dev libxslt1.1 libxslt1-dev locales locales-all \
       ffmpeg html2text ghostscript libreoffice pngcrush jpegoptim exiftool poppler-utils git wget \
-    \
+      libx11-dev libmcrypt-dev\
     && a2enmod rewrite headers \
-	&& docker-php-ext-configure gd  --with-jpeg-dir=/usr/local/include  --with-png-dir=/usr/local/include  --with-xpm-dir=/usr/local/include --with-freetype-dir=/usr/local/include \
-    && docker-php-ext-install calendar intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache \
-    && docker-php-ext-enable calendar intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache \
+    && docker-php-ext-install intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip \
+    && docker-php-ext-enable intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip \
     && pecl install xdebug redis imagick \
     && docker-php-ext-enable xdebug redis imagick \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install imap \
     && docker-php-ext-enable imap \
-    && pecl install apcu \
     \
     && cd ~ \
     \

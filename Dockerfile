@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y lsb-release \
       && cd .. \
       && rm -rf ImageMagick* \
     && a2enmod rewrite headers \
-    && docker-php-ext-install intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip \
-    && docker-php-ext-enable intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip \
+    && docker-php-ext-install intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache \
+    && docker-php-ext-enable intl mbstring mcrypt mysqli bcmath bz2 gd soap xmlrpc xsl pdo pdo_mysql fileinfo exif zip opcache\
     && pecl install xdebug redis imagick \
     && docker-php-ext-enable xdebug redis imagick \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
